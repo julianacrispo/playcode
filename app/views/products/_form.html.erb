@@ -1,19 +1,15 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<!-- test -->
+<%= form_for @product, html: {multipart: true} do |f| %>
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+   
+    
   </div>
   <div class="actions">
     <%= f.submit %>
