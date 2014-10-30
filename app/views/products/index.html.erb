@@ -1,12 +1,20 @@
 <%= link_to 'Post a Man Bun', new_product_path %>
-  
+
+
+<div id="buns" class="transitions-enabled">
   <% @products.each do |product| %>
+  <div class="box panel panel-default">
     <%= image_tag product.image.url(:medium) %>
-    <%= product.name %>
-    <%= link_to 'Show', product %>
-    <%= link_to 'Edit', edit_product_path(product) %>
-    <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="panel-body">
+        <%= product.name %>
+        <%= link_to 'Show', product %>
+        <%= link_to 'Edit', edit_product_path(product) %>
+        <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
   <% end %>
+</div>
+
 
 
 
