@@ -3,12 +3,10 @@
 <%= form_for @product, html: {multipart: true} do |f| %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :image %>
+
     <%= f.file_field :image, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "add yo bun"%>
   </div>
 <% end %>
