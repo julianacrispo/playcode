@@ -13,5 +13,6 @@
 
   *= require_self
   *= require 'masonry/transitions'
+  *= require dropzone/dropzone
   *= require_tree .
  */

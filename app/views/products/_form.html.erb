@@ -1,12 +1,8 @@
 
 <!-- test -->
-<%= form_for @product, html: {multipart: true} do |f| %>
+<%= form_for @product, html: {multipart: true, class: "dropzone"} do |f| %>
 
-  <div class="field">
+    <%= f.file_field :image, class: "dropzone" %>
 
-    <%= f.file_field :image, class: "form-control" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "add yo bun"%>
-  </div>
+    <%= f.submit "add yo bun", class: 'btn btn-default'%>
 <% end %>

@@ -56,6 +56,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    dropzonejs-rails (0.5.1)
+      rails (> 3.1)
     erubis (2.7.0)
     execjs (2.2.2)
     hike (1.2.3)
@@ -144,6 +146,7 @@ DEPENDENCIES
   aws-sdk (~> 1.20.0)
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  dropzonejs-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
