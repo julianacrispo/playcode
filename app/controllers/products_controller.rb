@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.find(params[:id])
+    @comments = @product.comments
+    @comment = Comment.new
   end
 
   # GET /products/new

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   # get 'welcome/about'
 
-  resources :products, :path => "buns"
+  resources :products, :path => "buns" do
+    resources :comments, only: [:show, :create, :destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

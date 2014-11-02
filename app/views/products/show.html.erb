@@ -1,10 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<div class="jumbotron">
+    <%= @product.name %>
+    <%= image_tag @product.image.url(:medium) %>
+  <p>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+    <%= link_to 'Back', products_path %> |
+    <%= link_to 'Delete', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
 
-  <%= @product.name %>
-  <%= image_tag @product.image.url(:medium) %>
-<p>
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Back', products_path %> |
-  <%= link_to 'Delete', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+   <%= form_for [@product, @comment] do |f| %>
+    <%= f.text_field :body, placeholder: "Comment on this bun" %>
+     <%= f.submit "Add", class: 'btn btn-success' %>
+ <% end %>
+</div>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td> <%= comment.body %> </td>
+        <td> <small> posted <%= time_ago_in_words(comment.created_at) %> ago </small></td>
+        <td>
+       
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
