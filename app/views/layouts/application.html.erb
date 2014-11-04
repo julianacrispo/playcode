@@ -8,6 +8,73 @@
 </head>
 <body>
 
+       <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+        <% elsif flash[:error] %>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:error] %>
+          </div>
+        <% elsif flash[:alert] %>
+          <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+<nav>
+  <ul>
+    <li id="link-one">
+      <div>1</div>
+      <div>One</div>
+    </li>
+    <li id="link-two">
+      <div>2</div>
+      <div>Two</div>
+    </li>
+    <li id="link-three">
+      <div>3</div>
+      <div>Three</div>
+    </li>
+    <li id="link-four">
+      <div>4</div>
+      <div>Four</div>
+    </li>
+    <li id="link-five">
+      <div>5</div>
+      <div>Five</div>
+    </li>
+  </ul>
+</nav>
+<div id="one" class="desktop">
+  <h1>Sidebar Example</h1>
+  <p>This is 1</p>
+  <p>Something here.</p>
+</div>
+<div id="two" class="desktop">
+  <h1>Two</h1>
+  <p>This is 2</p>
+  <p>Some texts.</p>
+</div>
+<div id="three" class="desktop">
+  <h1>Three</h1>
+  <p>This is 3</p>
+  <p>Some more texts here.</p>
+</div>
+<div id="four" class="desktop">
+  <h1>Four</h1>
+  <p>This is 4</p>
+  <p>Texts here.</p>
+</div>
+<div id="five" class="desktop">
+  <h1>Five</h1>
+  <p>This is 5</p>
+  <p>Contents here.</p>
+</div>
+
+
 <%= yield %>
 
 </body>

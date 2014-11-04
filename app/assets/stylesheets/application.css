@@ -16,3 +16,101 @@
   *= require dropzone/dropzone
   *= require_tree .
  */
+
+@import url(http://fonts.googleapis.com/css?family=Quicksand:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Quicksand', 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  background: grey;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.5rem;
+  height: 100%;
+  background: #2680f3;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-box-shadow: 0px 0px 10px #333;
+  box-shadow: 0px 0px 10px #333;
+}
+nav:hover {
+  width: 14rem;
+}
+nav * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+nav > ul {
+  display: table;
+  width: 14rem;
+}
+nav > ul > li {
+  display: table-row;
+  background: #0c66da;
+  cursor: pointer;
+}
+nav > ul > li:hover {
+  background: #569cf6;
+}
+nav > ul > li:active {
+  background: #87b9f8;
+}
+nav > ul > li > div {
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: table-cell;
+}
+nav > ul > li > div:nth-child(1) {
+  width: 3.5rem;
+  text-align: center;
+}
+nav > ul > li > div:nth-child(2) {
+  width: 10.5rem;
+  text-align: left;
+  padding-left: 0.7rem;
+}
+
+.desktop {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1rem 1rem 4.5rem;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  overflow: auto;
+}
+.desktop h1 {
+  margin: 1rem 0;
+  font-weight: 300;
+}
+.desktop h1:nth-child(1) {
+  margin-top: 0;
+}
+.desktop p {
+  font-weight: 300;
+  text-align: justify;
+  margin: 0 0 1rem 0;
+}
+

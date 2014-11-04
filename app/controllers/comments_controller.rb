@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
     redirect_to @product
   end
 
+
   def destroy
     #grab item from the list
     @product = Product.find(params[:product_id])
