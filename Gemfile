@@ -27,6 +27,8 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk', '~>1.20.0'
 gem 'masonry-rails', '~> 0.2.0'
 gem 'dropzonejs-rails'
+gem 'devise'
+gem 'figaro', '1.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
