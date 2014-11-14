@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @product = Product.new
+    @comment = @product.comments
   end
 
   # GET /products/1

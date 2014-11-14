@@ -1,27 +1,4 @@
 
-<div class="btn-wrapper">
-
-  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
-    Add A Bun!
-  </button>
-
-<!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Drag and Drop Your Bun</h4>
-        </div>
-        <div class="modal-body">
-         <%= render 'form' %>
-        </div>
-      
-      </div>
-    </div>
-  </div>
-
-</div> <!-- btn wrapper end -->
 
 <div class="content">
   <div id="buns" class="transitions-enabled">
@@ -30,7 +7,9 @@
       <%= link_to image_tag(product.image.url(:medium)), product %>
         <div class="panel-body">
           <%= product.name %>
+
           <%= link_to 'Edit', edit_product_path(product) %>
+          <!-- todo: add authorization for delete button -->
           <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>

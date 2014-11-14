@@ -13,11 +13,17 @@
 </div> 
 
 <div class="col-md-6">
+  <% if current_user %>
     <%= form_for [@product, @comment] do |f| %>
         <%= f.text_field :body, placeholder: "Comment on this bun" %>
          <%= f.submit "Add", class: 'btn btn-success' %>
      <% end %>
+     <% else %>
+      <p> please <%= link_to "sign in", new_user_session_path %> or 
+          <%= link_to "sign up", new_user_registration_path %> to add comments </p>
+    <% end %>
       <tbody>
+
         <% @comments.each do |comment| %>
           <tr>
             <p><td> <%= comment.body %> </td>
