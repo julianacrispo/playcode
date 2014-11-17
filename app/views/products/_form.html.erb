@@ -3,6 +3,7 @@
 <%= form_for @product, html: {multipart: true, class: "dropzone"} do |f| %>
 
     <%= f.file_field :image, class: "dropzone" %>
+    <%= f.text_field :name %>
 
-    <%= f.submit "add yo bun", class: 'btn btn-default'%>
+    <%= f.submit "Add Brand", class: 'btn btn-default'%>
 <% end %>

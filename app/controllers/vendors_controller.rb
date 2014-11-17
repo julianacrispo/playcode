@@ -5,11 +5,13 @@ class VendorsController < ApplicationController
   # GET /vendors.json
   def index
     @vendors = Vendor.all
+    @vendor = Vendor.new
   end
 
   # GET /vendors/1
   # GET /vendors/1.json
   def show
+    @vendor = Vendor.new
   end
 
   # GET /vendors/new
@@ -51,6 +53,7 @@ class VendorsController < ApplicationController
     end
   end
 
+
   # DELETE /vendors/1
   # DELETE /vendors/1.json
   def destroy
@@ -69,6 +72,6 @@ class VendorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
-      params[:vendor]
+      params.require(:vendor).permit(:image, :vendor_name)
     end
 end
