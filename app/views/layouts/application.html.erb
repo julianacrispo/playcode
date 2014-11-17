@@ -30,7 +30,7 @@
       <div class="btn-wrapper">
 
         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
-          Add A Bun!
+          Add a Brand
         </button>
 
       <!-- Modal -->
@@ -42,13 +42,13 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 
                 <% if current_user %>
-                  <h4 class="modal-title" id="myModalLabel">Drag and Drop Your Bun</h4>
+                  <h4 class="modal-title" id="myModalLabel">Drag and Drop Your Brand Logo</h4>
                   </div>
                   <div class="modal-body">
                     <%= render 'form' %>
                   </div>
                 <% else %>
-                  <h4> Please sign in to add a bun! </h4>
+                  <h4> Please sign in to add a Brand! </h4>
                   <%= link_to "Sign In", new_user_session_path %> or 
                   <%= link_to "Sign Up", new_user_registration_path %>
                 <% end %>

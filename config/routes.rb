@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # get 'welcome/about'
 
-  resources :products, :path => "buns" do
+  resources :products do
     resources :comments, only: [:show, :create, :destroy]
   end
 
