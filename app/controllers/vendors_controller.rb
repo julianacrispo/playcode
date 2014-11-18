@@ -15,7 +15,10 @@ class VendorsController < ApplicationController
     @vendor = Vendor.find(params[:id])
     @comments = @vendor.comments
     @comment = Comment.new
-    @vendor = Vendor.new
+    @product = Product.new
+    #getting error 'undefined method `to_sym' for nil:NilClass'
+    #@products = @vendor.products
+    #@vendor = Vendor.includes(:products).find(params[:id])
   end
 
   # GET /vendors/new
@@ -76,6 +79,6 @@ class VendorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
-      params.require(:vendor).permit(:image, :vendor_name)
+      params.require(:vendor).permit(:image, :vendor_name, :product_ids =>[])
     end
 end

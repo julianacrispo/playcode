@@ -1,0 +1,6 @@
+<p> Todo:  get join table to save and only show products that work with this vendor</p>
+
+<% Product.all.each do |product| %>
+    <%= link_to image_tag(product.image.url(:thumb)), product %>
+<% end %>
+
