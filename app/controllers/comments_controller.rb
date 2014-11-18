@@ -1,11 +1,14 @@
 class CommentsController < ApplicationController
   def show
     @product = products.find(params[:product_id])
+    @vendor = vendors.find(params[:vendor_id])
     @comment = @product.comments
+  
     @comment = Comment.new
   end
 
   def create
+    @product = Product.find(params[:product_id])
     @product = Product.find(params[:product_id])
 
     @comment = @product.comments.build( comment_params )

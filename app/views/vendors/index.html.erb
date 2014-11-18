@@ -1,27 +1,3 @@
-<h1>Listing vendors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vendors.each do |vendor| %>
-      <tr>
-        <td><%= link_to 'Show', vendor %></td>
-        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Vendor', new_vendor_path %>
-
 
 
 <div class="content">
@@ -30,15 +6,14 @@
     <div class="box panel panel-default">
       <%= link_to image_tag(vendor.image.url(:medium)), vendor %>
         <div class="panel-body">
+          <p><%= vendor.vendor_name %> | <%= vendor.comments.count %> comments </p>
 
           <%= link_to 'Edit', edit_vendor_path(vendor) %>
           <!-- todo: add authorization for delete button -->
           <%= link_to 'Delete', vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
+          
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-
-

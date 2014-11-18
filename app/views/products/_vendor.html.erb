@@ -1,0 +1,9 @@
+<p> Todo:  </p>
+
+<% Vendor.all.each do |vendor| %>
+    <%= link_to image_tag(vendor.image.url(:thumb)), vendor %>
+<% end %>
+
+<% @product.vendors.each do |vendor| %>
+<%= link_to image_tag(vendor.image.url(:thumb)), vendor %>
+<% end %>

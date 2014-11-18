@@ -1,9 +1,30 @@
+<%= form_for @product, html: { multipart: true } do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this brand from being saved:</h2>
 
-<!-- test -->
-<%= form_for @product, html: {multipart: true, class: "dropzone"} do |f| %>
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <%= f.file_field :image, class: "dropzone" %>
+  <div class="form-group">
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
 
-    <%= f.submit "Add Brand", class: 'btn btn-default'%>
-<% end %>
+<% Vendor.all.each do |vendor| %>
+  <div>
+  <%= check_box_tag :vendor_ids, vendor.vendor_name, @product.vendors.include?(vendor), :vendor_name =>'product[vendor_ids][]' %>
+  <%= label_tag :vendor_ids, vendor.vendor_name %>
+  </div>
+  <% end %>
+  <%= submit_tag %>
+  <% end %>

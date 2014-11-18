@@ -1,4 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+
+<div class="show-container"
+  <div class="row">
+    <div class="col-md-6">
+
+        <%= image_tag @vendor.image.url(:medium) %>
+      <p>
+        <p><%= @vendor.vendor_name %> </p>
+
+        <%= link_to 'Back', vendors_path %> |
+        <%= link_to 'Delete', @vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+     
+      <tbody>
+
+        
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div> 
+
+<div class="col-md-6">
+<%= form_for @vendor, html: {multipart: true } do |f| %>
+
+    <%= f.file_field :image %>
+
+    <%= f.submit "add vendor logo", class: 'btn btn-default'%>
+<% end %>
+
+ </div> 
+
+
