@@ -1,16 +1,30 @@
-
 <%= form_for @vendor, html: { multipart: true } do |f| %>
-  
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this tech from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="form-group">
-    <%= f.label :vendor_name %>
+    <%= f.label :vendor_name %><br>
     <%= f.text_field :vendor_name %>
-    <%= f.label :image %>
-
+  </div>
+  <div class="form-group">
+    <%= f.label :image %><br>
     <%= f.file_field :image, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+<% Product.all.each do |product| %>
+  <div>
+  <%= check_box_tag :product_ids, product.name, @vendor.products.include?(product), :name =>'vendor[product_ids][]' %>
+  <%= label_tag :product_ids, product.name %>
   </div>
-<% end %>
+  <% end %>
+  <%= submit_tag %>
+  <% end %>

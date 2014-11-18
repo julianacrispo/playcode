@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-resources :vendors 
+
+  resources :vendors do
+    resources :comments, only: [:show, :create, :destroy]
+  end
   
-
-
   devise_for :users
-  # get 'welcome/index'
 
-  # get 'welcome/about'
 
   resources :products, :path => "brands" do
     resources :comments, only: [:show, :create, :destroy]

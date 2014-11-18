@@ -8,8 +8,10 @@ class CommentsController < ApplicationController
   end
 
   def create
+
     @product = Product.find(params[:product_id])
-    @product = Product.find(params[:product_id])
+
+    #@vendor = Vendor.find(params[:vendor_id]) #todo: figure out the nested routes issue
 
     @comment = @product.comments.build( comment_params )
     @comment.product = @product

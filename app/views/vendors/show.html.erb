@@ -1,17 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 
 <div class="show-container"
   <div class="row">
     <div class="col-md-6">
 
         <%= image_tag @vendor.image.url(:medium) %>
-      <p>
         <p><%= @vendor.vendor_name %> </p>
-
+        <%= link_to 'Edit', edit_vendor_path %> |
         <%= link_to 'Back', vendors_path %> |
         <%= link_to 'Delete', @vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
+
+    <% if current_user %>
+      <%= form_for [@vendor, @comment] do |f| %>
+          <%= f.text_field :body, placeholder: "Comment on this vendor" %>
+           <%= f.submit "Add", class: 'btn btn-success' %>
+    <% end %>
+    <% else %>
+      <p> please <%= link_to "sign in", new_user_session_path %> or 
+          <%= link_to "sign up", new_user_registration_path %> to add comments on this brand</p>
+    <% end %>
      
       <tbody>
 

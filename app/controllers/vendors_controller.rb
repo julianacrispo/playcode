@@ -17,8 +17,8 @@ class VendorsController < ApplicationController
     @comment = Comment.new
     @product = Product.new
     #getting error 'undefined method `to_sym' for nil:NilClass'
-    #@products = @vendor.products
-    #@vendor = Vendor.includes(:products).find(params[:id])
+    @products = @vendor.products
+    @vendor = Vendor.includes(:products).find(params[:id])
   end
 
   # GET /vendors/new
@@ -49,6 +49,8 @@ class VendorsController < ApplicationController
   # PATCH/PUT /vendors/1
   # PATCH/PUT /vendors/1.json
   def update
+    @vendor = Vendor.find(params[:id])
+    @product = Product.find(params[:product_id])
     respond_to do |format|
       if @vendor.update(vendor_params)
         format.html { redirect_to @vendor, notice: 'Vendor was successfully updated.' }
@@ -79,6 +81,6 @@ class VendorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
-      params.require(:vendor).permit(:image, :vendor_name, :product_ids =>[])
+      params.require(:vendor).permit(:image, :vendor_name, { :product_ids =>[] })
     end
 end
