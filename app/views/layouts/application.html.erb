@@ -30,9 +30,14 @@
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email me free intel">
+
+          <!-- search test / todo: make search work on all pages and also search for vendors-->
+  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Brands", :class => "form-control" %>
+    <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
+  <% end %>
         </div>
-        <button type="submit" class="btn btn-default">Sign up</button>
+       
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
@@ -85,6 +90,7 @@
              <%= link_to "Sign Up", new_user_registration_path %>
            <% end %>
          </div>
+
 
 
 <%= yield %>

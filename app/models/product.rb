@@ -4,4 +4,10 @@ class Product < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :customers
   has_many :vendors, :through => :customers
+
+#search test
+  def self.search(query)
+    where("name like?", "%#{query}%") #todo: autopop and return non exact searches
+  end 
+
 end

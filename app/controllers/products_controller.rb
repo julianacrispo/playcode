@@ -7,6 +7,11 @@ class ProductsController < ApplicationController
     @products = Product.all
     @product = Product.new
     @comment = @product.comments
+    if params[:search]
+      @products = Product.search(params[:search])
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
