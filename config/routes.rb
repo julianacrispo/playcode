@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   
   devise_for :users
+  resources :users, only: [:show, :index, :update]
 
 
   resources :products, :path => "brands" do

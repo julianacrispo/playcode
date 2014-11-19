@@ -40,9 +40,11 @@
        
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="#"></a></li>
+         
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Dropdown<span class="caret"></span></a>
+       
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Dropdown<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -82,14 +84,27 @@
           <li><%= link_to 'Brand Index', products_path %></li>
     </div>
        
-          <div class="pull-right user-info">
-           <% if current_user %>
-             Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-           <% else %>
-             <%= link_to "Sign In", new_user_session_path %> or 
-             <%= link_to "Sign Up", new_user_registration_path %>
-           <% end %>
-         </div>
+    <div class="pull-right user-info">
+
+     <% if current_user %>
+      
+      Hello <%= link_to (current_user.name || current_user.email), current_user %>!
+
+      <%= link_to edit_user_registration_path, class: 'btn btn-primary btn-sm' do %>
+        <span class="glyphicon glyphicon-off"></span>
+      <% end %>
+    
+      <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+        <span class="glyphicon glyphicon-log-out"></span>
+      <% end %>
+      
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %> or
+      <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+
+    </div>
+
 
 
 
