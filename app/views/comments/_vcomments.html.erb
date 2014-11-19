@@ -1,0 +1,31 @@
+ <% if current_user %>
+      <%= form_for [@vendor, @comment] do |f| %>
+          <%= f.text_field :body, placeholder: "Comment on this brand" %>
+           <%= f.submit "Add", class: 'btn btn-success' %>
+    <% end %>
+    <% else %>
+      <p> please <%= link_to "sign in", new_user_session_path %> or 
+          <%= link_to "sign up", new_user_registration_path %> to add comments on this brand</p>
+    <% end %>
+      
+      <!-- Comment Table -->
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <p><td> <%= comment.body %> </td>
+            <td> 
+              <small> 
+                posted <%= time_ago_in_words(comment.created_at) %> ago 
+                | <%= link_to "Delete", [@vendor, comment], method: :delete %>
+            </small></p>
+          </td>
+            <td>
+           
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div> 
