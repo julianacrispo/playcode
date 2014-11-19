@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
     @product = products.find(params[:product_id])
     @vendor = vendors.find(params[:vendor_id])
     @comment = @product.comments
+    @comment = @vendor.comments #not sure about this line
+    @comment = current_user.comments.build( comment_params )
   
     @comment = Comment.new
   end
@@ -14,7 +16,9 @@ class CommentsController < ApplicationController
     #@vendor = Vendor.find(params[:vendor_id]) #todo: figure out the nested routes issue
 
     @comment = @product.comments.build( comment_params )
+    #@comment = @current_user.comments.build( comment_params )
     @comment.product = @product
+    @new_comment = Comment.new
 
     if @comment.save
       flash[:notice] = "Comment was saved"
@@ -44,7 +48,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :product_id, :vendor_id)
   end
 
 end

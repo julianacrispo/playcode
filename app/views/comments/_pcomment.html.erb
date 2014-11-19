@@ -15,9 +15,9 @@
             <p><td> <%= comment.body %> </td>
             <td> 
               <small> 
-                posted <%= time_ago_in_words(comment.created_at) %> ago 
+                posted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user %>
                 | <%= link_to "Delete", [@product, comment], method: :delete %>
-            </small></p>
+            </small> </p>
           </td>
             <td>
            
