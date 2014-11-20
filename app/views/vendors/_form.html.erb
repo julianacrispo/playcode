@@ -20,11 +20,12 @@
     <%= f.file_field :image, class: "form-control" %>
   </div>
 
-<% Product.all.each do |product| %>
-  <div>
-  <%= check_box_tag :product_ids, product.name, @vendor.products.include?(product), :name =>'vendor[product_ids][]' %>
-  <%= label_tag :product_ids, product.name %>
-  </div>
-  <% end %>
-  <%= submit_tag %>
-  <% end %>
+  <% Product.all.each do |product| %>
+    <div>
+    <%= hidden_field_tag "vendor[product_ids][]", nil%>
+    <%= check_box_tag "vendor[product_ids][]", product.id, @vendor.product_ids.include?(product.id), id: dom_id(product) %>
+    <%= label_tag dom_id(product), product.name %> <br/>
+    </div>
+    <% end %>
+    <%= submit_tag %>
+    <% end %>
