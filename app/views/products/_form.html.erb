@@ -1,30 +1,33 @@
-<%= form_for @product, html: { multipart: true } do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this brand from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= form_for @product, html: { multipart: true } do |f| %>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this brand from being saved:</h2>
+
+        <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
+    <div class="form-group">
+      <%= f.label :image %><br>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+  <!-- test -->
+  <% Vendor.all.each do |vendor| %>
+    <div>
+    <%= hidden_field_tag "product[vendor_ids][]", nil%>
+    <%= check_box_tag "product[vendor_ids][]", vendor.id, @product.vendor_ids.include?(vendor.id), id: dom_id(vendor) %>
+    <%= label_tag dom_id(vendor), vendor.vendor_name %> <br/>
+    </div>
+    <% end %>
+    <%= submit_tag %>
+    <% end %>
 
-  <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %><br>
-    <%= f.file_field :image, class: "form-control" %>
-  </div>
-
-<% Vendor.all.each do |vendor| %>
-  <div>
-  <%= check_box_tag :vendor_ids, vendor.vendor_name, @product.vendors.include?(vendor), :vendor_name =>'product[vendor_ids][]' %>
-  <%= label_tag :vendor_ids, vendor.vendor_name %>
-  </div>
-  <% end %>
-  <%= submit_tag %>
-  <% end %>
