@@ -1,6 +1,5 @@
 <div class = "container">
-  <h1> user show </h1>
-  <li> todo: display comments on brands and vendors</li>
-  <li> add a feature to favorite or follow a brand </li> 
-
+ <h4>  <%= current_user.name %>'s Comments </h4>
+ <%= pluralize(@user.comments.count, 'comment') %>
+<p> display comments here </p>
 </div> 
