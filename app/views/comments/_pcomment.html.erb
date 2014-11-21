@@ -1,11 +1,11 @@
  <% if current_user %>
       <%= form_for [@product, @comment] do |f| %>
-          <%= f.text_field :body, placeholder: "Comment on this brand" %>
-           <%= f.submit "Add", class: 'btn btn-success' %>
+          <%= f.text_field :body, placeholder: "Comment on the brand" %>
+           <%= f.submit "Say it", class: 'btn btn-success' %>
     <% end %>
     <% else %>
-      <p> please <%= link_to "sign in", new_user_session_path %> or 
-          <%= link_to "sign up", new_user_registration_path %> to add comments on this brand</p>
+      <p> <%= link_to "sign in", new_user_session_path %> or 
+          <%= link_to "sign up", new_user_registration_path %> to comment on this brand</p>
     <% end %>
       
       <!-- Comment Table -->

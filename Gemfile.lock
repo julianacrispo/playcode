@@ -46,6 +46,9 @@ GEM
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
+    byebug (3.1.2)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -57,6 +60,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    columnize (0.8.9)
+    debugger-linecache (1.2.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -157,6 +162,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (~> 1.20.0)
   bootstrap-sass
+  byebug
   coffee-rails (~> 4.0.0)
   devise
   dropzonejs-rails
