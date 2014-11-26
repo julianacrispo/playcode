@@ -1,7 +1,4 @@
 class Comment < ActiveRecord::Base
-  belongs_to :product
-  belongs_to :vendor
   belongs_to :user
-
-  # accepts_nested_attributes_for :products, :vendors
+  belongs_to :commentable, polymorphic: true
 end

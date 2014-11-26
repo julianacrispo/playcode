@@ -1,7 +1,7 @@
 
 <div class="show-container"
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
 
         <%= image_tag @vendor.image.url(:medium) %>
         <p><%= @vendor.vendor_name %> </p>
@@ -10,11 +10,16 @@
         <%= link_to 'Back', vendors_path %> |
         <%= link_to 'Delete', @vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
+    </div>
 
-<%= render partial: 'comments/vcomments' %>
 
-<div class="col-md-6">
+<div class="col-md-4">
   <%= render 'product' %>
  </div> 
 
+
+<div class="col-md-4">
+ <%= render partial: 'comments/vcomments' %>
+</div> 
+</div>
 

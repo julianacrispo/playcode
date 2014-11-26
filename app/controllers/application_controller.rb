@@ -6,9 +6,15 @@ class ApplicationController < ActionController::Base
  
 
   def is_admin?
+    # current_user && current_user.role == "admin"
     current_user && current_user.admin?
   end
   helper_method :is_admin?
+
+
+  def admin_required
+    redirect_to products_path, flash: 'You need to be an admin for this' unless is_admin?
+  end
 
    protected
  

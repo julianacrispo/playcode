@@ -4,12 +4,17 @@
 
         <%= image_tag @product.image.url(:medium) %>
         <p><%= @product.name %> </p>
-          <%= link_to 'Edit', edit_product_path(@product) %> |
+
+        <% if is_admin? %>
+          <%= link_to 'Edit', edit_product_path(@product) %>|
           <%= link_to 'Back', products_path %> |
           <%= link_to 'Delete', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
         </p>
 
 <%= render partial: 'comments/pcomment' %>
+
+
 
 <div class="col-md-6">
   <%= render 'vendor' %>

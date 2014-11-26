@@ -1,12 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+#admin controller action jon test
+  #before_action :admin_required, only: [:edit, :create]
+  
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
     @product = Product.new
-    @comment = @product.comments
+    @comments = @product.comments
     if params[:search]
       @products = Product.search(params[:search])
     else
@@ -14,15 +17,17 @@ class ProductsController < ApplicationController
     end
   end
 
+ 
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
-    @comments = @product.comments
-    @comment = Comment.new
-    @vendor = Vendor.new
-    @vendors = @product.vendors
+    # @product = Product.find(params[:id])
     @product = Product.includes(:vendors).find(params[:id])
+    @comment = Comment.new
+    @comments = @product.comments
+    # @comment = Comment.new
+    # @vendor = Vendor.new
+    @vendors = @product.vendors
   end
 
   # GET /products/new

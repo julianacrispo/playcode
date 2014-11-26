@@ -1,39 +1,21 @@
 class CommentsController < ApplicationController
-  def show
-    @product = products.find(params[:product_id])
-    @vendor = vendors.find(params[:vendor_id])
-    @comment = @product.comments
-    @comment = @vendor.comments #not sure about this line
-    @comment = current_user.comments.build( comment_params )
-  
-    @comment = Comment.new
-  end
+before_filter :find_commentable #find the thing that they're commenting on
 
   def create
+    @comment = @commentable.comments.build( comment_params )
+      if @comment.save
+        flash[:notice] = "comment was saved"
+      else
+         flash[:error] = "comment couldn't be saved. try again"
+       end
 
-    @product = Product.find(params[:product_id])
-
-    #@vendor = Vendor.find(params[:vendor_id]) #todo: figure out the nested routes issue
-
-    @comment = @product.comments.build( comment_params )
-    #@comment = @current_user.comments.build( comment_params )
-    @comment.product = @product
-    @new_comment = Comment.new
-
-    if @comment.save
-      flash[:notice] = "Comment was saved"
-    else
-      flash[:error] = "There was an error saving. Please try again"
-    end
-
-    redirect_to @product
+    redirect_to @commentable
   end
 
 
   def destroy
     #grab item from the list
-    @product = Product.find(params[:product_id])
-    @comment = @product.comments.find(params[:id])
+    @comment = @commentable.comments.find( comment_params )
     #delete that item
       if @comment.destroy
         flash[:notice] = "comment was removed"
@@ -47,8 +29,16 @@ class CommentsController < ApplicationController
 
   private
 
+  def find_commentable
+    if params[:vendor_id]
+      @commentable = Vendor.find params[:vendor_id]
+    elsif params[:product_id]
+      @commentable = Product.find params[:product_id]
+    end
+  end
+
   def comment_params
-    params.require(:comment).permit(:body, :product_id, :vendor_id)
+    params.require(:comment).permit(:body)
   end
 
 end

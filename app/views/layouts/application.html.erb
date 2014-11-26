@@ -30,14 +30,15 @@
   
         
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+<%= form_tag products_path, :method => "get", id: "search-form", class: "navbar-form navbar-left", role: "search" do %>
         <div class="form-group">
 
           <!-- search test / todo: make search work on all pages and also search for vendors-->
-  <%= form_tag '/brands', :method => "get", id: "search-form" do %>
+
     <%= text_field_tag :search, params[:search], placeholder: "Search", :class => "form-control" %>
     <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
   <% end %>
+
         </div>
        
       </form>
