@@ -7,6 +7,12 @@ class VendorsController < ApplicationController
     @vendors = Vendor.all
     @vendor = Vendor.new
     @comment = @vendor.comments
+
+    if params[:search]
+      @vendors = Vendor.search(params[:search])
+    else
+      @vendors = Vendor.all
+    end
   end
 
   # GET /vendors/1

@@ -12,7 +12,7 @@ before_filter :find_commentable #find the thing that they're commenting on
     redirect_to @commentable
   end
 
-
+#todo: fix comment destroy and
   def destroy
     #grab item from the list
     @comment = @commentable.comments.find( comment_params )

@@ -5,3 +5,7 @@
   <%= f.text_field :body %>
   <%= f.submit %>
 <% end %>
+
+<% @comments.each do |comment| %>
+<p><%= comment.body %></p>
+<% end %>
