@@ -2,6 +2,9 @@
 <div class="show-container"
   <div class="row">
     <div class="col-md-4">
+<div id= "vendor-head">
+  <h4> Vendor </h4>
+</div>
 
         <%= image_tag @vendor.image.url(:medium) %>
         <p><%= @vendor.vendor_name %> </p>
@@ -15,13 +18,20 @@
     </div>
 
 
-<div class="col-md-4">
-  <%= render 'product' %>
- </div> 
 
 
 <div class="col-md-4">
- <%= render partial: 'comments/vcomments' %>
+  <div id= "vendor-head">
+    <h4> Brands they work with </h4>
+  </div>
+    <%= render 'product' %>
 </div> 
+
+
+  <div class="col-md-4">
+    <div id="vendor-head">
+   <%= render partial: 'comments/vcomments' %>
+    </div> 
+  </div>
 </div>
 

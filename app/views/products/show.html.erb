@@ -1,6 +1,9 @@
 <div class="show-container"
   <div class="row">
     <div class="col-md-4">
+      <div id="brand-head"> 
+        <h4> Brand </h4>
+     </div>
 
         <%= image_tag @product.image.url(:medium) %>
         <p><%= @product.name %> </p>
@@ -15,6 +18,10 @@
 
 
     <div class="col-md-4">
+      <div id= "brand-head">
+        <h4> Vendors </h4>
+        <p> (Companies powering <%= @product.name%>'s marketing cloud)</p>
+      </div>
       <%= render 'vendor' %>
     </div> <!-- row end -->
 

@@ -1,40 +1,32 @@
-<h1> pcomments</h1>
+<div id= "brand-head">
+<h4> Say Something About <%= @product.name %> </h4>
 
+ <% if is_user? %>
 
-<%= form_for [@product, Comment.new] do |f| %>
+  <%= form_for [@product, Comment.new] do |f| %>
 
-  <%= f.text_field :body,  class: 'form-control', placeholder: "Enter Comment" %>
+    <%= f.text_field :body,  class: 'form-control', placeholder: "Enter Comment" %>
 
-  <%= f.submit 'Add', :class => 'btn btn-default' %>
+    <%= f.submit 'Add', :class => 'btn btn-default' %>
 
+  <% end %>
+  <% else %>
+  <p> <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> to comment </p>
 <% end %>
-
 
 <tbody>
- <% @comments.each do |comment| %>
-<tr>
-<p><td> <%= comment.body %> </td>
-<td> 
-<small> 
-posted <%= time_ago_in_words(comment.created_at) %> ago 
-| <%= link_to "Delete", [@product, comment], method: :delete %>
- </small></p>
-</td>
- <td>
- 
- </td>
-</tr>
-<% end %>
+   <% @comments.each do |comment| %>
+      <tr>
+        <p>
+          <td> <%= comment.body%> </td>
+      <td> 
+        <small> 
+             posted <%= time_ago_in_words(comment.created_at) %> ago 
+          | <%= link_to "Delete", [@product, comment], method: :delete %>
+        </small></p>
+      </td>
+    </tr>
+  <% end %>
 </tbody>
+</div> <!-- end #brand-head -->
 
-
-<div class="row">
-<div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->

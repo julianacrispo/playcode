@@ -1,11 +1,27 @@
 
-  <h1> vcomments </h1>
+  <h4> Say Something About <%= @vendor.vendor_name %> </h4>
 
-<%= form_for [@vendor, Comment.new] do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
+<% if is_user? %>
+  <%= form_for [@vendor, Comment.new] do |f| %>
+    <%= f.text_field :body, class: 'form-control', placeholder: "Enter Comment" %>
+    <%= f.submit 'Add', :class => 'btn btn-default' %>
+  <% end %>
+<% else %>
+  <p> <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> to comment </p>
 <% end %>
 
+<tbody>
 <% @comments.each do |comment| %>
-<p><%= comment.body %></p>
+<tr>
+<p><td><%= comment.body %></td>
+<td>
+  <small>
+    posted <%= time_ago_in_words(comment.created_at) %> ago| <%= link_to "Delete", [@vendor, comment], method: :delete %>
+  </small></p>
+</td>
+<td>
+  </td>
+</tr>
+
+</tbody>
 <% end %>
