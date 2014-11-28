@@ -7,11 +7,11 @@
       <%= link_to image_tag(vendor.image.url(:medium)), vendor %>
         <div class="panel-body">
           <p><%= vendor.vendor_name %> | <%= vendor.comments.count %> comments </p>
-
-          <%= link_to 'Edit', edit_vendor_path(vendor) %>
-          <!-- todo: add authorization for delete button -->
-          <%= link_to 'Delete', vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+          <% if is_admin? %>
+            <%= link_to 'Edit', edit_vendor_path(vendor) %>
+            <!-- todo: add authorization for delete button -->
+            <%= link_to 'Delete', vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </div>
       </div>
     <% end %>

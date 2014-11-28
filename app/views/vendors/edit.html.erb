@@ -1,3 +1,4 @@
+<% if is_admin? %>
 <div class = "container">
   <h1>Editing vendor</h1>
 
@@ -6,3 +7,4 @@
   <%= link_to 'Show', @vendor %> |
   <%= link_to 'Back', vendors_path %>
 </div>
+<% end %>

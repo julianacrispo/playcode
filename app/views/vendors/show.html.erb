@@ -6,9 +6,11 @@
         <%= image_tag @vendor.image.url(:medium) %>
         <p><%= @vendor.vendor_name %> </p>
         <p><%= @vendor.about %> </p>
-        <%= link_to 'Edit', edit_vendor_path %> |
-        <%= link_to 'Back', vendors_path %> |
-        <%= link_to 'Delete', @vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if is_admin? %>
+          <%= link_to 'Edit', edit_vendor_path %> |
+          <%= link_to 'Back', vendors_path %> |
+          <%= link_to 'Delete', @vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
       </p>
     </div>
 
