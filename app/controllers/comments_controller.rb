@@ -3,6 +3,7 @@ before_filter :find_commentable #find the thing that they're commenting on
 
   def create
     @comment = @commentable.comments.build( comment_params )
+    @comment.user_id = current_user.id if current_user
       if @comment.save
         flash[:notice] = "comment was saved"
       else
@@ -15,15 +16,18 @@ before_filter :find_commentable #find the thing that they're commenting on
 #todo: fix comment destroy and
   def destroy
     #grab item from the list
-    @comment = @commentable.comments.find( comment_params )
+    #todo: add authorization so only the user of the comments can delete it. 
+    @comment = Comment.find( params[:id] )
+    #@comment = @commentable.comments.find( comment_params )
     #delete that item
+    
       if @comment.destroy
         flash[:notice] = "comment was removed"
       else
         flash[:error] = "comment couldn't be removed. try again"
       end
     # respond_with(@item) do |f|
-      redirect_to @product
+      redirect_to @commentable
     end
 
 
