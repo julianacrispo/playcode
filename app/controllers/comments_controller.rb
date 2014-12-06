@@ -15,6 +15,9 @@ before_filter :find_commentable #find the thing that they're commenting on
 
 #todo: fix comment destroy and
   def destroy
+    unless @commentable.user == current_user
+      return redirect_to @commentable, notice: "Not authorized"
+    end
     #grab item from the list
     #todo: add authorization so only the user of the comments can delete it. 
     @comment = Comment.find( params[:id] )

@@ -7,7 +7,7 @@ class Vendor < ActiveRecord::Base
 
 
    def self.search(query)
-    where("name like?", "%#{query}%") #todo: autopop and return non exact searches
+    where("vendor_name like?", "%#{query}%") #todo: autopop and return non exact searches
   end 
   
 end

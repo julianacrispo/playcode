@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
     @comments = @product.comments
     if params[:search]
       @products = Product.search(params[:search])
+      if @products.empty?
+        return redirect_to vendors_path(search: params[:search])
+      end
     else
       @products = Product.all
     end

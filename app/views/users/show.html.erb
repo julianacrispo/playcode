@@ -1,5 +1,9 @@
 <div class = "container">
  <h4>  <%= current_user.name %>'s Comments </h4>
  <%= pluralize(@user.comments.count, 'comment') %>
-<p> display comments for that user here </p>
+<% @comments.each do |comment| %>
+<p> <%= comment.body %> posted <%= time_ago_in_words(comment.created_at) %> about #todo: extract out the vendor_name or product name here </p>
+<% end %>
+
+
 </div> 
