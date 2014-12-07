@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-before_filter :find_commentable #find the thing that they're commenting on
+  respond_to :html, :js
+  before_filter :find_commentable #find the thing that they're commenting on
 
   def create
     @comment = @commentable.comments.build( comment_params )
@@ -11,15 +12,16 @@ before_filter :find_commentable #find the thing that they're commenting on
        end
 
     redirect_to @commentable
+    # respond_with(@comment) do |format|
+    #   format.html { redirect_to @commentable}
+    # end
   end
 
-#todo: fix comment destroy and
   def destroy
-    unless @commentable.user == current_user
-      return redirect_to @commentable, notice: "Not authorized"
-    end
-    #grab item from the list
-    #todo: add authorization so only the user of the comments can delete it. 
+    # unless @commentable.user == current_user
+    #   return redirect_to @commentable, notice: "Not authorized"
+    # end
+
     @comment = Comment.find( params[:id] )
     #@comment = @commentable.comments.find( comment_params )
     #delete that item
@@ -30,7 +32,10 @@ before_filter :find_commentable #find the thing that they're commenting on
         flash[:error] = "comment couldn't be removed. try again"
       end
     # respond_with(@item) do |f|
-      redirect_to @commentable
+      #redirect_to @commentable
+      respond_with(@comment) do |format|
+        format.html { redirect_to @commentable }
+      end
     end
 
 
