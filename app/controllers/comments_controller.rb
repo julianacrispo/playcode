@@ -20,15 +20,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    unless @commentable.user == current_user
-      return redirect_to @commentable, notice: "Not authorized"
-    end
-
-    @comment = Comment.find( params[:id] )
-    #@comment = @commentable.comments.find( comment_params )
-    #delete that item
+    @comment = current_user.comments.find params[:id]
     
-      if @comment.destroy
+      if @comment && @comment.destroy
         flash[:notice] = "comment was removed"
       else
         flash[:error] = "comment couldn't be removed. try again"
