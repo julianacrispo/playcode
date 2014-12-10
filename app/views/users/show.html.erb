@@ -1,9 +1,10 @@
+
 <div class = "container">
- <h4>  <%= current_user.name %>'s Comments </h4>
- <%= pluralize(@user.comments.count, 'comment') %>
-<% @comments.each do |comment| %>
-<p> <%= comment.body %> posted <%= time_ago_in_words(comment.created_at) %> about #todo: extract out the vendor_name or product name here </p>
+   <h4>  <%= current_user.name %>'s Comments </h4>
+<% current_user.comments.each do |comment| %>
+  <p><%= comment.body %> posted <%= time_ago_in_words(comment.created_at) %> about
+  <%= comment.commentable.name if comment.commentable_type == 'Product' %>
+  <%= comment.commentable.vendor_name if comment.commentable_type == 'Vendor' %>  </p>
+  
 <% end %>
-
-
-</div> 
+</div>
