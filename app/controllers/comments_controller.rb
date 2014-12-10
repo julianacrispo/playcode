@@ -11,16 +11,18 @@ class CommentsController < ApplicationController
          flash[:error] = "comment couldn't be saved. try again"
        end
 
-    redirect_to @commentable
-    # respond_with(@comment) do |format|
-    #   format.html { redirect_to @commentable}
-    # end
+    # redirect_to @commentable
+    respond_with(@comment) do |format|
+      format.js
+      format.html { redirect_to @commentable}
+    end
+    
   end
 
   def destroy
-    # unless @commentable.user == current_user
-    #   return redirect_to @commentable, notice: "Not authorized"
-    # end
+    unless @commentable.user == current_user
+      return redirect_to @commentable, notice: "Not authorized"
+    end
 
     @comment = Comment.find( params[:id] )
     #@comment = @commentable.comments.find( comment_params )
@@ -34,6 +36,7 @@ class CommentsController < ApplicationController
     # respond_with(@item) do |f|
       #redirect_to @commentable
       respond_with(@comment) do |format|
+        format.js
         format.html { redirect_to @commentable }
       end
     end

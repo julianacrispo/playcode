@@ -1,0 +1,9 @@
+ <p id="comment-<%= comment.id %>">
+        <%= comment.body%> 
+        <small> 
+             posted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to comment.user.name, comment.user %>
+          <% if comment.user == current_user %>
+            | <%= link_to "Delete", [comment.commentable, comment], method: :delete, remote: true %>
+          <% end %>
+        </small>
+      </p>
