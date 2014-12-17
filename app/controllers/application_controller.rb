@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     # current_user && current_user.role == "admin"
     current_user && current_user.admin?
   end
+  
   helper_method :is_admin?
 
   def is_user?
