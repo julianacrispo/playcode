@@ -1,0 +1,8 @@
+New comment or Vendor to "<%= @product.name %>"
+<%= "=" * (@product.name.length + 12) %>
+
+By: <%= @comment.user.name %>
+
+<%= @comment.body %>
+
+Visit online at: <%= product_url(@product, anchor: "comment-#{@comment.id}") %>
