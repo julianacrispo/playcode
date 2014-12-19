@@ -30,5 +30,8 @@
     </div>
   </div>
 
+<% if is_user? %>
+  <%= render partial: 'follows/follow', locals: { product: @product } %>
+<% end %>
 
 

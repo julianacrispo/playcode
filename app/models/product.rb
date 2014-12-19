@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :customers
   has_many :vendors, :through => :customers
+  has_many :follows, dependent: :destroy
 
 #search test
   def self.search(query)

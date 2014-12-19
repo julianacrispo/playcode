@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :products, :path => "brands" do
     resources :comments, only: [:show, :create, :destroy]
+     resources :follows, only: [:create, :destroy]
   end
 
   root 'products#index'

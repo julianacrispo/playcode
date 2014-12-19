@@ -1,0 +1,12 @@
+ <div class="follow">
+   <% if follow = current_user.followed(product) %>
+       <%= link_to [product, follow], class: 'btn btn-danger', method: :delete do %>
+        <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfollow
+      <% end %>
+   <% else %>
+     Want to follow this?
+     <%= link_to [product, Follow.new], class: 'btn btn-primary', method: :post do %>
+   <i class="glyphicon glyphicon-star"> </i>&nbsp; Follow
+    <% end %>
+   <% end %>
+ </div>
