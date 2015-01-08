@@ -6,9 +6,10 @@
     <% end %>
   <% end %>
 <% else %>
-    <% Vendor.take(2).each do |vendor| %>
+     To See Our Full List <%= link_to "Sign In", new_user_session_path %>  / <%= link_to "Sign Up", new_user_registration_path %>  
+    <p> <% Vendor.take(2).each do |vendor| %>
       <% if @product.vendor_ids.include?(vendor.id) %>
-        <%= link_to image_tag(vendor.image.url(:thumb)), vendor %>
+        <%= link_to image_tag(vendor.image.url(:thumb)), vendor %> </p>
       <% end %>
     <% end %>
 <% end %>
