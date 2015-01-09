@@ -1,12 +1,29 @@
 
 
+<% unless is_user? %>
+<div class = "jumbotron">
+  <div class = "row">
+    <div class= "col-md-4"> 
+    </div>
+
+      <div class = "home-btns">
+        <div id= "home-fun"> 
+          <h2>Explore Digital Technologies Brands Use</h2>
+           <p><%= link_to "Sign in With Linkedin", new_user_registration_path, class: "btn btn-info btn-lg" %></p>
+           <small> <button type="button" data-toggle="popover" title="Popover title" data-content="Because we want to keep it professional">Why Linkedin? </button>
+         </small>
+        </div>
+    </div>
+  </div>
+</div>
+
 <div class="content">
   <div id="products" class="transitions-enabled">
     <% @products.each do |product| %>
     <div class="box panel panel-default">
-      <%= link_to image_tag(product.image.url(:medium)), product %>
+      <%= link_to image_tag(product.image.url(:medium)) %>
         <div class="panel-body">
-          <p><%= product.name %> | <%= product.comments.count %> suggestions </p>
+          
           <% if is_admin? %>
             <%= link_to 'Edit', edit_product_path(product) %>
             <!-- todo: add authorization for delete button -->
@@ -20,4 +37,27 @@
 </div>
 
 
+<% else %> 
 
+
+<div class="content">
+  <div id="products" class="transitions-enabled">
+    <% @products.each do |product| %>
+    <div class="box panel panel-default">
+      <%= link_to image_tag(product.image.url(:medium)), product %>
+        <div class="panel-body">
+          
+          <% if is_admin? %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <!-- todo: add authorization for delete button -->
+            <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+            
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<% end %>
