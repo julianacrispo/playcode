@@ -29,6 +29,7 @@ gem 'masonry-rails', '~> 0.2.0'
 gem 'dropzonejs-rails'
 gem 'devise'
 gem 'figaro', '1.0'
+gem 'omniauth-linkedin-oauth2'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -45,7 +46,7 @@ group :development do
 end
 
 
-
+gem 'pry-rails', group: [:development, :test]
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

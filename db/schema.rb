@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219180738) do
+ActiveRecord::Schema.define(version: 20150109210846) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20141219180738) do
   add_index "follows", ["product_id"], name: "index_follows_on_product_id"
   add_index "follows", ["user_id"], name: "index_follows_on_user_id"
 
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -78,6 +88,8 @@ ActiveRecord::Schema.define(version: 20141219180738) do
     t.datetime "updated_at"
     t.string   "role"
     t.boolean  "email_follows",          default: true
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

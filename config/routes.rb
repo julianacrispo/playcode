@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :create, :destroy]
   end
   
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   resources :users, only: [:show, :index, :update]
 
 
