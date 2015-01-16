@@ -4,7 +4,7 @@ LinkedIn.configure do |config|
 
 #need production redirect
   if Rails.env.production?
-    config.redirect_uri = "http://techtrack.co/users/auth/linkedin/callback"
+    config.redirect_uri = "http://www.techtrack.co/users/auth/linkedin/callback"
   else
     config.redirect_uri = "http://localhost:3000/users/auth/linkedin/callback"
   end
