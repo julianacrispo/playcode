@@ -42,7 +42,9 @@
 
 <% else %> 
 
-
+<div>
+  <%= session[:positions] %>
+</div>
 <div class="content">
   <div id="products" class="transitions-enabled">
     <% @products.each do |product| %>

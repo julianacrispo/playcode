@@ -3,6 +3,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
 
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    session[:positions] = request.env["omniauth.auth"]['extra']['raw_info']['positions']['values'].map { |e| e['company']['name'] }
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated

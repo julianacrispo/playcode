@@ -91,6 +91,10 @@ GEM
       turbolinks
     json (1.8.1)
     jwt (1.2.0)
+    linkedin-oauth2 (1.0.0)
+      faraday (~> 0.9)
+      hashie (~> 3.2)
+      oauth2 (~> 1.0)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     masonry-rails (0.2.1)
@@ -202,6 +206,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  linkedin-oauth2 (= 1.0.0)
   masonry-rails (~> 0.2.0)
   omniauth-linkedin-oauth2
   paperclip!
