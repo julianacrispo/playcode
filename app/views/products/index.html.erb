@@ -9,7 +9,7 @@
       <div class = "home-btns">
         <div id= "home-fun"> 
           <h2>Explore Digital Technologies Brands Use</h2>
-           <p><%= link_to "Sign in With Linkedin", new_user_registration_path, class: "btn btn-info btn-lg" %></p>
+           <p><%= link_to "Sign in With Linkedin", user_omniauth_authorize_path(:linkedin), class: "btn btn-info btn-lg" %></p>
            <small> <button type="button" data-toggle="popover" title="Popover title" data-content="Because we want to keep it professional">Why Linkedin? </button>
          </small>
 
