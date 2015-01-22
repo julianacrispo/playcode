@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :products
   has_many :comments
+  has_many :companies, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, 
          :omniauthable, :omniauth_providers => [:linkedin]
@@ -14,7 +16,13 @@ def self.from_omniauth(auth)
     user.password = Devise.friendly_token[0,20]
     user.name = auth.info.name   # assuming the user model has a name
     #user.image = auth.info.image # assuming the user model has an image
+  end.tap do |u|
+    u.companies.create(prepare_companies_attrs(auth['extra']['raw_info']['positions']))
   end
+end
+
+def self.prepare_companies_attrs(positions)
+  positions['values'].map { |e| { name: e['company']['name'] } }
 end
 
   # def self.from_omniauth(auth) #extracts info that is available after authentication

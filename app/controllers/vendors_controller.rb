@@ -22,6 +22,7 @@ class VendorsController < ApplicationController
     @comments = @vendor.comments
     @comment = Comment.new
     @product = Product.new
+    @tried_vendor = TriedVendor.new
     #getting error 'undefined method `to_sym' for nil:NilClass'
     @products = @vendor.products
     @vendor = Vendor.includes(:products).find(params[:id])

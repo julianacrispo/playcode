@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109210846) do
+ActiveRecord::Schema.define(version: 20150121132956) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150109210846) do
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
   create_table "customers", force: true do |t|
     t.integer  "product_id"
@@ -66,6 +75,12 @@ ActiveRecord::Schema.define(version: 20150109210846) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "tried_vendors", force: true do |t|
+    t.integer  "vendor_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
