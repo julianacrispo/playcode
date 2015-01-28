@@ -7,7 +7,7 @@
     <%= f.submit 'Add', :class => 'btn btn-default' %>
   <% end %>
 <% else %>
-  <p> <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> to comment </p>
+ <p> <%= link_to "Sign in With Linkedin", user_omniauth_authorize_path(:linkedin) %> to see the comprehensive list</p>
 <% end %>
 
 <tbody>
@@ -16,7 +16,7 @@
 <p><td><%= comment.body %></td>
 <td>
   <small>
-    posted <%= time_ago_in_words(comment.created_at) %> ago by  | 
+    posted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to comment.user.name, comment.user %>
     
     <%= link_to "Delete", [@vendor, comment], method: :delete %>
 

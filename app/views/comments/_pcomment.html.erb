@@ -1,5 +1,5 @@
 <div id= "brand-head">
-<h4> Suggestions for <%= @product.name %> </h4>
+<h4> Comment on <%= @product.name %> </h4>
 
  <% if is_user? %>
 
@@ -11,7 +11,7 @@
 
   <% end %>
   <% else %>
-  <p> <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> to view or make a suggestion </p>
+ <p> <%= link_to "Sign in With Linkedin", user_omniauth_authorize_path(:linkedin) %> to comment </p>
 <% end %>
 
 <div class= "js-comments">

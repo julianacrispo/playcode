@@ -6,11 +6,10 @@
     <% end %>
   <% end %>
 <% else %>
+<p> <%= link_to "Sign in With Linkedin", user_omniauth_authorize_path(:linkedin) %> to see the comprehensive list</p>
   <% Product.take(2).each do |product| %>
     <% if @vendor.product_ids.include?(product.id) %>
       <%= link_to image_tag(product.image.url(:thumb)), product %>
     <% end %>
-
   <% end %> 
-    <p> To See the Comprehensive List <%= link_to "Sign In", new_user_session_path %>  / <%= link_to "Sign Up", new_user_registration_path %>  </p>
 <% end %>

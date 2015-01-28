@@ -1,0 +1,24 @@
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  I've Used This Before
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Where did you use it?</h4>
+      </div>
+      <div class="modal-body">
+       <%= form_for @tried_vendor do |f| %>
+      
+        <%= f.hidden_field :vendor_id, value: @vendor.id %>
+        <%= f.select :company_id , current_user.companies.collect { |c| [c.name, c.id] }   %>
+        <%= f.button "Submit" %>
+      </div>
+         <% end %>
+    </div>
+  </div>
+</div>

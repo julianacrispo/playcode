@@ -5,7 +5,7 @@ class FollowsController < ApplicationController
     follow = current_user.follows.build(product: @product)
 
     if follow.save
-      flash[:notice] = "followed post"
+      flash[:notice] = "followed"
       redirect_to [@product]
     else
       flash[:error] = "unable to follow. please try again"

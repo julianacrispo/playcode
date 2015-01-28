@@ -4,15 +4,6 @@
     <div class="col-md-4">
 <div id= "vendor-head">
 
-    <% if user_signed_in? %>
-
-     <%= form_for @tried_vendor do |f| %>
-      <%= f.hidden_field :vendor_id, value: @vendor.id %>
-      <%= f.select :company_id , current_user.companies.collect { |c| [c.name, c.id] }   %>
-      <%= f.button "Submit" %>
-    <% end %>
-
-    <%- end -%>
   <h4> Vendor </h4>
 </div>
  
@@ -33,14 +24,19 @@
 <div class="col-md-4">
   <div id= "vendor-head">
     <h4> Brands they work with </h4>
-  </div>
+
     <%= render 'product' %>
+      </div>
 </div> 
 
   <div class="col-md-4">
     <div id="vendor-head">
-   <%= render partial: 'comments/vcomments' %>
-    </div> 
+     <% if user_signed_in? %>
+        <%= render partial: 'tried_vendors/tried_vendors' %>
+      <%- end -%>
+       <%= render partial: 'comments/vcomments' %>
+      </div> 
+    </div>
   </div>
 </div>
 
