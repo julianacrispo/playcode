@@ -30,6 +30,7 @@ gem 'dropzonejs-rails'
 gem 'devise'
 gem 'figaro', '1.0'
 gem 'omniauth-linkedin-oauth2'
+gem 'nokogiri'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'linkedin-oauth2', '1.0.0'
