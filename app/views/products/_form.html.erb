@@ -22,7 +22,7 @@
     </div>
   <!-- test -->
       <p> TODO: Make Alphabetical order </p>
-  <% Vendor.all.each do |vendor| %>
+  <% Vendor.order(:vendor_name).all.each do |vendor| %>
     <div>
     <%= hidden_field_tag "product[vendor_ids][]", nil%>
     <%= check_box_tag "product[vendor_ids][]", vendor.id, @product.vendor_ids.include?(vendor.id), id: dom_id(vendor) %>
