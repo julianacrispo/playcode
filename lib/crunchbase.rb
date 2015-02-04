@@ -1,5 +1,5 @@
 require 'open-uri'
-require 'Nokogiri'
+require 'nokogiri'
 
 class Crunchbase
 
